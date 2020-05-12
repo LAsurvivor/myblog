@@ -4,6 +4,7 @@ description:        Autonomy Engineer
 author:             Robert Hu
 baseurl:            "/homepage"
 url:                "https://LAsurvivor.github.io"
+theme: jekyll-theme-clean-blog
 
 # Social Profiles
 twitter_username:   LAsurvivor1787
