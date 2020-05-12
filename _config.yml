@@ -2,7 +2,7 @@ title:              Cube's Workshop
 email:              lasurvivor1787@gmail.com
 description:        Autonomy Engineer
 author:             Robert Hu
-baseurl:            "/myblog"
+baseurl:            ""
 url:                "https://lasurvivor.github.io"
 theme: jekyll-theme-clean-blog
 
