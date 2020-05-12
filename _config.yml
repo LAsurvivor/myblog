@@ -23,3 +23,8 @@ plugins:
   - jekyll-feed
   - jekyll-paginate
   - jekyll-sitemap ## Uncomment this line to silently generate a sitemaps.org compliant sitemap for your Jekyll site
+
+# Sidebar settings
+sidebar: true  #添加侧边栏
+sidebar-about-description: "I Love SLAM!"
+sidebar-avatar: /img/posts/05.jpg     #你的大头贴，请使用绝对地址.
