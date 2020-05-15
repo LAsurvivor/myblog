@@ -4,7 +4,7 @@ description:        Autonomy Engineer
 author:             Robert Hu
 baseurl:            ""
 url:                "https://lasurvivor.github.io"
-theme: jekyll-theme-clean-blog
+theme:              jekyll-theme-clean-blog
 
 # Social Profiles
 twitter_username:   LAsurvivor1787
@@ -27,4 +27,4 @@ plugins:
 # Sidebar settings
 sidebar: true  #添加侧边栏
 sidebar-about-description: "I Love SLAM!"
-sidebar-avatar: /home/hzh/github/LAsurvivor.github.io/img/posts/05.jpg    #你的大头贴，请使用绝对地址.
+sidebar-avatar: /home/hzh/github/LAsurvivor.github.io/img/posts/07.png    #你的大头贴，请使用绝对地址.
