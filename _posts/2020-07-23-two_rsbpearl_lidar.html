@@ -6,15 +6,13 @@ date: 2020-07-23 11:30:13
 background: '/img/posts/04.jpg'
 ---
 
-# <p>同时运行多个RS-Bpearl雷达的驱动</p>
-
 <p>本文将讲述如何运行多个RS-Bpearl雷达。</p>
 
 <p>首先参考这篇文章https://blog.csdn.net/qq_35632833/article/details/106357855#2_IP_4，下载相应驱动代码，配置电脑ip，确认单个雷达可以运行后再接着做下一步。 </p>
 
 
 
-### <p>1. 下载RSView并配置参数</p>
+<h2 class="section-heading">1. 下载RSView并配置参数</h2>
 
 <p>首先打开速腾官网的下载界面 https://www.robosense.ai/resource， 下载RSView for Ubuntu 16.04，解压后进入文件夹可以看到run_rsview.sh文件，在该路径下打开终端，输入</p>
 
@@ -32,7 +30,7 @@ background: '/img/posts/04.jpg'
 
 
 
-### <p>2. 配置launch文件</p>
+<h2 class="section-heading">2. 配置launch文件</h2>
 
 <p>接下来开始配置launch文件。</p>
 
@@ -87,7 +85,7 @@ background: '/img/posts/04.jpg'
 
 
 
-### <p>3. 运行launch文件</p>
+<h2 class="section-heading">3. 运行launch文件</h2>
 
 <p>上述更改完毕后运行：</p>
 
@@ -102,7 +100,7 @@ roslaunch rslidar_pointcloud two_lidar.launch
 
 
 
-### <p>4. 录制rosbag</p>
+<h2 class="section-heading">4. 录制rosbag</h2>
 
 <p>如果需要录制rosbag做两个激光雷达点云校准的话只需要运行：</p>
 
