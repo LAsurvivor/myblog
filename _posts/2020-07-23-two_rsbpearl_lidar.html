@@ -8,17 +8,15 @@ background: '/img/posts/04.jpg'
 
 <p>本文将讲述如何运行多个RS-Bpearl雷达。</p>
 
-<p>首先参考这篇文章https://blog.csdn.net/qq_35632833/article/details/106357855#2_IP_4，下载相应驱动代码，配置电脑ip，确认单个雷达可以运行后再接着做下一步。 </p>
+<p>首先参考这篇文章 <a href="https://blog.csdn.net/qq_35632833/article/details/106357855#2_IP_4">速腾 RS-Bpearl 显示点云</a>，下载相应驱动代码，配置电脑ip，确认单个雷达可以运行后再接着做下一步。 </p>
 
 
 
 <h2 class="section-heading">1. 下载RSView并配置参数</h2>
 
-<p>首先打开速腾官网的下载界面 https://www.robosense.ai/resource， 下载RSView for Ubuntu 16.04，解压后进入文件夹可以看到run_rsview.sh文件，在该路径下打开终端，输入</p>
+<p>首先打开速腾官网的下载界面 <a href="https://www.robosense.ai/resource">https://www.robosense.ai/resource</a>， 下载RSView for Ubuntu 16.04，解压后进入文件夹可以看到run_rsview.sh文件，在该路径下打开终端，输入</p>
 
-```
-./run_rsview.sh
-```
+<blockquote class="blockquote">./run_rsview.sh</blockquote>
 
 <p>之后用网线将其中一颗RS-Bpearl雷达连到电脑上并通电，点击左上角第二个图标Sensor Stream，Type of Lidar选择RSBPearl，点击ok，如果没有问题的话便可以在界面中看到激光雷达点云。</p>
 
@@ -36,7 +34,15 @@ background: '/img/posts/04.jpg'
 
 <p>在文首贴出的那篇文章的代码中，在/ros_rslidar/rslidar_pointcloud/launch目录下找到two_lidar.launch文件，更改launch文件如下：</p>
 
-```
+<blockquote class="blockquote"><launch>
+<group ns="ns1">
+  <node  name="rslidar_node" pkg="rslidar_driver" type="rslidar_node" output="screen" >
+    <param name="model" value="RSBPEARL"/>
+    <param name="device_ip" value="192.168.1.200" />
+    <param name="msop_port" value="6699"/>
+    <param name="difop_port" value="7788"/>
+  </node>
+```html
 <launch>
 <group ns="ns1">
   <node  name="rslidar_node" pkg="rslidar_driver" type="rslidar_node" output="screen" >
@@ -89,7 +95,7 @@ background: '/img/posts/04.jpg'
 
 <p>上述更改完毕后运行：</p>
 
-```
+```html
 cd ~/catkin_ws
 catkin_make
 source devel/setup.bash
@@ -104,7 +110,7 @@ roslaunch rslidar_pointcloud two_lidar.launch
 
 <p>如果需要录制rosbag做两个激光雷达点云校准的话只需要运行：</p>
 
-```
+```html
 cd ~/catkin_ws
 rosbag record /ns1/rslidar_pointcloud /ns2/rslidar_pointcloud
 ```
