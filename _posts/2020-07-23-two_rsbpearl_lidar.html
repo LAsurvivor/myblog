@@ -84,11 +84,12 @@ background: '/img/posts/04.jpg'
 
 <p>上述更改完毕后运行：</p>
 
-<pre><code>cd ~/catkin_ws
+<pre>
+cd ~/catkin_ws
 catkin_make
 source devel/setup.bash
 roslaunch rslidar_pointcloud two_lidar.launch
-</code></pre>
+</pre>
 
 <p>订阅相应topic后可以分别看见两个激光雷达点云。</p>
 
@@ -99,9 +100,9 @@ roslaunch rslidar_pointcloud two_lidar.launch
 <p>如果需要录制rosbag做两个激光雷达点云校准的话只需要运行：</p>
 
 <pre>
-<code>cd ~/catkin_ws
+cd ~/catkin_ws
 rosbag record /ns1/rslidar_pointcloud /ns2/rslidar_pointcloud
-</code></pre>
+</pre>
 
 <p>开始录制后到一定时间按下Ctrl+C即可结束录制，可以在~/catkin_ws路径下看见录制完成的rosbag。</p>
 
