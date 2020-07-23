@@ -16,7 +16,7 @@ background: '/img/posts/04.jpg'
 
 <p>首先打开速腾官网的下载界面 <a href="https://www.robosense.ai/resource">https://www.robosense.ai/resource</a>， 下载RSView for Ubuntu 16.04，解压后进入文件夹可以看到run_rsview.sh文件，在该路径下打开终端，输入</p>
 
-<blockquote class="blockquote">./run_rsview.sh</blockquote>
+<pre>./run_rsview.sh</pre>
 
 <p>之后用网线将其中一颗RS-Bpearl雷达连到电脑上并通电，点击左上角第二个图标Sensor Stream，Type of Lidar选择RSBPearl，点击ok，如果没有问题的话便可以在界面中看到激光雷达点云。</p>
 
@@ -34,58 +34,11 @@ background: '/img/posts/04.jpg'
 
 <p>在文首贴出的那篇文章的代码中，在/ros_rslidar/rslidar_pointcloud/launch目录下找到two_lidar.launch文件，更改launch文件如下：</p>
 
-<blockquote class="blockquote"><launch>
-<group ns="ns1">
-  <node  name="rslidar_node" pkg="rslidar_driver" type="rslidar_node" output="screen" >
-    <param name="model" value="RSBPEARL"/>
-    <param name="device_ip" value="192.168.1.200" />
-    <param name="msop_port" value="6699"/>
-    <param name="difop_port" value="7788"/>
-  </node>
-```html
-<launch>
-<group ns="ns1">
-  <node  name="rslidar_node" pkg="rslidar_driver" type="rslidar_node" output="screen" >
-    <param name="model" value="RSBPEARL"/>
-    <param name="device_ip" value="192.168.1.200" />
-    <param name="msop_port" value="6699"/>
-    <param name="difop_port" value="7788"/>
-  </node>
+<textarea>text</textarea>
 
-  <node  name="cloud_node" pkg="rslidar_pointcloud" type="cloud_node" output="screen" >
-    <param name="model" value="RSBPEARL"/>
-    <param name="angle_path" value="$(find rslidar_pointcloud)/data/rs_bpearl/angle.csv" />
-    <param name="channel_path" value="$(find rslidar_pointcloud)/data/rs_bpearl/ChannelNum.csv" />
-    <param name="max_distance" value="150"/>
-    <param name="min_distance" value="0.1"/>
-    <param name="resolution_type" value="0.5cm"/>
-    <param name="intensity_mode" value="3"/>
-  </node>
-</group>
-
-<group ns="ns2">
-  <node  name="rslidar_node" pkg="rslidar_driver" type="rslidar_node" output="screen" >
-    <param name="model" value="RSBPEARL"/>
-    <param name="device_ip" value="192.168.1.201"/>
-    <param name="msop_port" value="9966"/>
-    <param name="difop_port" value="8877"/>
-  </node>
-
-  <node  name="cloud_node" pkg="rslidar_pointcloud" type="cloud_node" output="screen" >
-    <param name="model" value="RSBPEARL"/>
-    <param name="angle_path" value="$(find rslidar_pointcloud)/data/rs_bpearl2/angle.csv" />
-    <param name="channel_path" value="$(find rslidar_pointcloud)/data/rs_bpearl2/ChannelNum.csv" />
-    <param name="max_distance" value="150"/>
-    <param name="min_distance" value="0.1"/>
-    <param name="resolution_type" value="0.5cm"/>
-    <param name="intensity_mode" value="3"/>
-  </node>
-</group>
-
-<node name="rviz" pkg="rviz" type="rviz"  args="-d $(find rslidar_pointcloud)/rviz_cfg/rslidar.rviz" />
-
-</launch>
-```
+<pre>
+text2
+</pre>
 
 <p>这里和原本的launch文件一样，设置了两个group，多个激光雷达可以继续往上添加即可。在model栏将value改为“RSBPEARL”，ip, msop_port, difop_port按照之前设置的更改，参数按照相应激光雷达的参数改（这里是从单个RSBpearl雷达的launch文件中复制过来的），channel_path更改到/ros_rslidar/rslidar_pointcloud/data路径的对应文件夹下，此处我复制了一个rs_bpearl的文件夹，将两个雷达的路径分别到两个文件夹中，如果使用同一个文件夹也是可以的。最后加上了rviz，如果不加的话就自己用rosrun rviz rviz打开订阅相应话题即可，注意frame要改成rslidar。</p>
 
@@ -95,12 +48,12 @@ background: '/img/posts/04.jpg'
 
 <p>上述更改完毕后运行：</p>
 
-```html
+<pre>
 cd ~/catkin_ws
 catkin_make
 source devel/setup.bash
 roslaunch rslidar_pointcloud two_lidar.launch
-```
+</pre>
 
 <p>订阅相应topic后可以分别看见两个激光雷达点云。</p>
 
@@ -110,10 +63,10 @@ roslaunch rslidar_pointcloud two_lidar.launch
 
 <p>如果需要录制rosbag做两个激光雷达点云校准的话只需要运行：</p>
 
-```html
+<pre>
 cd ~/catkin_ws
 rosbag record /ns1/rslidar_pointcloud /ns2/rslidar_pointcloud
-```
+</pre>
 
 <p>开始录制后到一定时间按下Ctrl+C即可结束录制，可以在~/catkin_ws路径下看见录制完成的rosbag。</p>
 
