@@ -34,7 +34,7 @@ background: '/img/posts/04.jpg'
 
 <p>在文首贴出的那篇文章的代码中，在/ros_rslidar/rslidar_pointcloud/launch目录下找到two_lidar.launch文件，更改launch文件如下：</p>
 
-<textarea>
+<pre>
 &lt;launch&gt;
 &lt;group ns=&quot;ns1&quot;&gt;
   &lt;node  name=&quot;rslidar_node&quot; pkg=&quot;rslidar_driver&quot; type=&quot;rslidar_node&quot; output=&quot;screen&quot; &gt;
@@ -72,7 +72,9 @@ background: '/img/posts/04.jpg'
 &lt;/group&gt;
 &lt;node name=&quot;rviz&quot; pkg=&quot;rviz&quot; type=&quot;rviz&quot;  args=&quot;-d $(find rslidar_pointcloud)/rviz_cfg/rslidar.rviz&quot; /&gt;
 &lt;/launch&gt;
-</textarea>
+</pre>
+
+
 
 <p>这里和原本的launch文件一样，设置了两个group，多个激光雷达可以继续往上添加即可。在model栏将value改为“RSBPEARL”，ip, msop_port, difop_port按照之前设置的更改，参数按照相应激光雷达的参数改（这里是从单个RSBpearl雷达的launch文件中复制过来的），channel_path更改到/ros_rslidar/rslidar_pointcloud/data路径的对应文件夹下，此处我复制了一个rs_bpearl的文件夹，将两个雷达的路径分别到两个文件夹中，如果使用同一个文件夹也是可以的。最后加上了rviz，如果不加的话就自己用rosrun rviz rviz打开订阅相应话题即可，注意frame要改成rslidar。</p>
 
